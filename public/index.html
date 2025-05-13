@@ -1,0 +1,30 @@
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Офлайн-заметки</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" type="image/png" href="/icons/icon-192x192.png">
+</head>
+<body>
+  <div class="container">
+    <div class="offline-status" id="offlineStatus">Офлайн-режим</div>
+    
+    <div class="editor">
+      <textarea id="noteContent" placeholder="Введите текст заметки..."></textarea>
+      <button onclick="saveNote()">Добавить</button>
+      <button onclick="cancelEdit()" style="margin-left: 0.5rem;">Отмена</button>
+    </div>
+
+    <div class="notes-list" id="notesList"></div>
+  </div>
+
+  <script src="/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
+</body>
+</html>
